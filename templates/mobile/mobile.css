@@ -1,0 +1,48 @@
+body,#main_table
+{
+	background-color: #e0dcd1;
+}
+a,a:active,a:link,a:visited
+{
+	color: lightblue;
+}
+
+#inner_table
+{
+	background-color:#000;
+}
+.leftbg
+{
+	background-image: url(content_left_bg.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+}
+.rightbg
+{
+	background-image: url(content_right_bg.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+#banner,#mainmenu_bg
+{
+	background-image:url(mobile-head.png);
+}
+.menu_link
+{
+	text-align: center;
+	background-image: url(white_menu.gif);
+}
+.content
+{
+	background-image: url(rain.png);
+	background-repeat: repeat-x;
+	background-position: top;
+	color: #fff;
+	vertical-align: top;
+}
+#content
+{
+	background-image: url(rain2.png);
+	background-repeat: repeat-y;
+	background-position: top;
+}

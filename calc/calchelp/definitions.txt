@@ -1,0 +1,18 @@
+JavaScript: A scripting language, developed by Netscape and Sun Microsystems, specialized for controlling Web browser processes.  JavaScript is a clientside scripting language.  (This is not the same as Java)
+
+Java: Java is an Object Oriented Programming (OOP) language created by James Gosling of Sun Microsystems.  This is a compiled programming language (rather than JavaScripts client side scripting).
+
+debug: Constantly execute and search through lines of code to make sure there are no errors.  Bugs meaning there are errors.
+
+Binary: Digits used are numbers 0 and 1. Each number occupies a place value. When 1 is reached, the value goes to 0 and 1 is added to the next place value.  Also known as &quot;Base 2&quot;.
+
+menu header: The top-most section of the menu.  Examples of menu headers are: File, Edit, Conv, View, and Help
+
+float: Specifies the number of decimal places to round a given equation
+
+hexidecimal: Digits used are numbers 0 through 9 and the English letters A through F. A represents 10, B represents 11, C - 12, D - 13, E - 14 and F - 15. Each number occupies a place value. When F is reached, the value goes to 0 and 1 is added to the next place value.  Also known as &quot;Base 16&quot;.
+
+open source: When programmers can read, redistribute, and modify the source code for a piece of software.  This Calculator, for example, is open source because I give anyone permission to use/modify it so long that I am credited as the original creator.
+
+memory indicator: When an equation is stored in memory (by selecting MS or simply pressing the S key), a large &quot;M&quot; appears inside of it to show that the memory has stored.  By selecting MC or pressing the C key the memory is cleared and the memory indicator is blank once again.
+

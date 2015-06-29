@@ -1,0 +1,133 @@
+<!doctype html>
+<!--
+    @author Sam Gleske
+    @created Thu Apr 11 17:51:23 EDT 2013
+    @license The MIT License (no copyrights needed)
+    -->
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>ECEC-357 study group</title>
+  <link type="text/css" href="jquery-ui-1.10.2.custom/css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+  <script src="jquery-ui-1.10.2.custom/js/jquery-1.9.1.js"></script>
+  <script src="jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.js"></script>
+  <script>
+  /*
+    Accordian Example - http://jqueryui.com/accordion/
+  */
+  $(function() {
+    //accordion UI
+    $( "#accordion" ).accordion();
+  });
+  </script>
+  <style type="text/css">
+  /* Sam's custom CSS */
+  body{
+    font: 14px "Trebuchet MS", sans-serif;
+    margin: 50px;
+  }
+  table {
+    margin: 1em 0;
+    width: 100%;
+    font: 14px Verdana, Helvetica, sans-serif;
+    cursor: auto !important;
+  }
+  thead th {
+    color: rgb(73, 73, 73);
+    font-weight: bold;
+    font-size: 11px;
+  }
+  td, th {
+    padding: 0em;
+    font-size: 11px;
+    border: 1px solid rgb(102, 102, 102);
+  }
+  /* crossoff class is for crossing out old meetings from the table */
+  .crossoff td {
+    color: #b2b2b2;
+    text-decoration: line-through;
+  }
+  </style>
+</head>
+<body>
+
+<h1>Welcome to the ECEC-357 study group (Spring 2013)</h1>
+
+<div id="accordion">
+  <h3>Study Schedule</h3>
+  <div>
+    <p>This is a list of previous and upcoming study sessions.
+    <table>
+    <thead>
+      <tr><th>Date</th><th>Time</th><th>Location</th><th>Space (Room)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tues, Apr 16, 2013</td><td>5:15pm - 6:15pm</td><td>Hagerty Library</td><td>219B</td></tr>
+    </tbody>
+    </table>
+  </div>
+  <h3>About Tutor</h3>
+  <div>
+    <p>
+      I'm Sam Gleske.  If you would like to learn more about me you can Google my name.  
+      My name is fairly unique on the internet (who knew?).  Since I work full time I can
+      only tutor weekdays after 5pm.  For now I'm aiming to run a consistent session every week
+      on Tuesday around 5 and 6 pm.  If this does not work for you then let me know, I may be
+      able to accommodate.
+    </p>
+    <p>
+      <strong>Email:</strong> 
+      <script>
+        /* stop spam */
+        // u = user, d = domain, s = subject
+        (function(u,d,s){
+          document.open("text/html");
+          document.write('<a href="mailto:'+u+'@'+d+'?Subject='+s+'">'+u+'@'+d+'</a>');
+          document.close();
+        })("sag47","drexel.edu","[ECEC-357%20study%20group]");
+      </script>
+      <noscript>&lt;email generated with javascript&gt;</noscript><br>
+      Please append your subject to the default "[ECEC-357 study group]" subject.  Otherwise, I may miss your email.
+    </p>
+    <p>
+      Feel free to email me for my other contact information (phone, IM, etc).
+    </p>
+  </div>
+  <h3>Credits</h3>
+  <div>
+    <p>
+      I would like to give a shout out to a couple of projects I used to make this website.
+    </p>
+    <ul>
+      <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+      <li><a href="http://validator.w3.org/">W3C HTML Validator</a></li>
+      <li><a href="http://jigsaw.w3.org/css-validator/">W3C CSS Validator</a></li>
+      <li><a href="http://www.vim.org/">vim</a></li>
+      <li><a href="http://www.ubuntu.com/ubuntu/whats-new">Ubuntu Linux</a></li>
+    </ul>
+    <p><strong>Download website source:</strong> <a href="source.zip">source.zip</a>
+  </div>
+</div>
+<h1>Notes:</h1>
+<div class="ui-widget">
+  <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+    <p>
+      <span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+      <strong>Library Rule:</strong> No meals are permitted in any of the Group Study Rooms. Snacks 
+      and drinks in spill proof containers are allowed. Please dispose of your trash properly. Do not 
+      leave trash in the Group Study Rooms when you are finished with your reservation.
+    </p>
+  </div>
+</div>
+<h1>Alerts:</h1>
+<p>No alerts at this time.</p>
+<!--
+<div class="ui-widget">
+  <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+    <strong>Alert:</strong> some message.</p>
+  </div>
+</div>
+-->
+</body>
+</html>

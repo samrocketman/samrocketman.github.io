@@ -1,0 +1,5 @@
+Counter created from:
+http://www.htmlgoodies.com/beyond/cgi/article.php/3470131/So-You-Want-Your-Own-Counter-CGI-Huh.htm
+
+cgi-bin is chmod 711
+count is chmod 733

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Global Internet Traffic Map</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="refresh" content="90">
+    <style type="text/css">
+      *
+      {
+        margin:0px;
+        padding:0px;
+      }
+      body,div
+      {
+        margin:10px;
+      }
+    </style>
+    <script type="text/javascript">
+      function show_graph(url)
+      {
+        document.getElementById('graph').src=url;
+        //alert(document.getElementById('graph').src);
+        document.getElementById('graph').style.display="block";
+      }
+      function hide_graphs()
+      {
+        document.getElementById('graph').src="http://www.internettrafficreport.com/gifs/tr_index_global.gif";
+      }
+    </script>
+  </head>
+  <body>
+    <div style="float: left">
+      <img src="http://www.internettrafficreport.com/gifs/tr_map_global.gif" style="width: 470px;height: 264px; border: 0px" usemap="#map" alt="traffic report global map">
+      <map name="map">
+        <!-- #$-:Image map file created by GIMP Image Map plug-in -->
+        <!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+        <!-- #$-:Please do not edit lines starting with "#$" -->
+        <!-- #$VERSION:2.3 -->
+        <!-- #$AUTHOR:Sam Gleske   -->
+        <area shape="rect" coords="7,62,87,128" onmouseover="show_graph('http://www.internettrafficreport.com/graphs/tr_namerica_r1.gif');" onmouseout="hide_graphs();" href="http://www.internettrafficreport.com/namerica.htm" target="map_details" alt="Nort America">
+        <area shape="rect" coords="52,163,131,227" onmouseover="show_graph('http://www.internettrafficreport.com/graphs/tr_samerica_r1.gif');" onmouseout="hide_graphs();" href="http://www.internettrafficreport.com/samerica.htm" target="map_details" alt="South America">
+        <area shape="rect" coords="179,95,259,160" onmouseover="show_graph('http://www.internettrafficreport.com/graphs/tr_europe_r1.gif');" onmouseout="hide_graphs();" href="http://www.internettrafficreport.com/europe.htm" target="map_details" alt="Europe">
+        <area shape="rect" coords="285,189,364,254" onmouseover="show_graph('http://www.internettrafficreport.com/graphs/tr_australia_r1.gif');" onmouseout="hide_graphs();" href="http://www.internettrafficreport.com/australia.htm" target="map_details" alt="Australia">
+        <area shape="rect" coords="315,38,394,103" onmouseover="show_graph('http://www.internettrafficreport.com/graphs/tr_asia_r1.gif');" onmouseout="hide_graphs();" href="http://www.internettrafficreport.com/asia.htm" target="map_details" alt="Asia">
+      </map>
+    </div>
+    <div id="map_info">
+      <h2>Internet Traffic Report</h2>
+      <a href="http://www.internettrafficreport.com" target="map_details"><img src="http://www.internettrafficreport.com/gifs/tr_index_global.gif" id="graph" alt="Mouse over map for graph." ></a>
+    </div>
+  </body>
+</html>

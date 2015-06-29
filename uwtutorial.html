@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Underwater Photography with Gimp</title>
+<style type="text/css">
+body{
+	background-color:white;
+	color:black;
+}
+</style>
+</head>
+<body>
+
+<h1>About UW Photography</h1>
+<p>If you already know about the effects of light underwater then you can skip this section.</p>
+
+<h2>Light filtering at depth</h2>
+
+<p>There's a little bit of background information one needs to know about what happens to light as you go deeper in water.  Light is filtered as you go deeper like the colors of the rainbow (ROYGBIV).</p>
+
+<p>As you go deeper under water first Red light is filtered and the scenery around you has an orange tint.  Orange Light is filtered after going deeper and the scenery around you has a yellowish tint.  Yellow light is filtered going deeper than that at this point the scenery around you looks greenish-blue.  Green light is filtered after going deeper in which the scenery around you looks a dark pure blue.  And then finally blue light is filtered along with indigo and violet which makes everything pitch black.  These color tints can only be viewed by scenery at the same depth as yourself so if you look down deeper into the water then objects start becoming more blue even though you yourself may be at the orange depth.</p>
+
+<h2>Color depth terminology</h2>
+
+<p>I'll refer to the depths as to what they would look like to the human eye.</p>
+<ul>
+ <li>Red filtered - called the orange depth because less red looks more orange</li>
+ <li>Orange filtered - called the yellow depth because less orange looks more yellow</li>
+ <li>Yellow filtered - called the green depth because less Red, Orange, and Yellow looks more green.</li>
+ <li>Green filtered - called the blue depth because less green looks more blue.</li>
+ <li>Blue filtered - called the black depth because when blue, indigo, and violet are finally filtered nothing can be seen with the human eye.</li>
+</ul>
+
+<p>I'll reverse that list so you can quickly refer back to this list as a quick comparison.</p>
+<ul>
+ <li>Orange depth - Red light filtered</li>
+ <li>Yellow depth - Red and Orange light filtered</li>
+ <li>Green depth - Red, Orange, and Yellow light filtered</li>
+ <li>Blue depth - Red, Orange, Yellow, and Green light filtered</li>
+ <li>Black depth - All spectrum of light is filtered.</li>
+</ul>
+
+<h2>Cameras and filter lenses</h2>
+<p>In my opinion, it is best to use no lens filters at all when working with underwater photography.  Some underwater cameras come with (or have the option) a red light lens filter.  This attempts to color correct the scenery for the photographer at depth.</p>
+
+<p>Please do not misunderstand that this does not multiply colors exposing more red light to your camera.  It filters out all other colors in attempt to show more red.  This has a negative effect of exposing less light to your camera sensor (if you're using digital) or film.  The only way you can multiply more colors is to use a light source underwater such as a camera lamp.</p>
+
+<p>One can easily achieve the effects of a red lens filter by using a graphics program such as Gimp.  After taking the pictures with maximum light exposure should you use Gimp to produce an image (giving it more red, less blue, or whatever).</p>
+
+<p>Now that you have a solid understanding about light and its affects on underwater photography lets move on to producing quality underwater images in Gimp.</p>
+
+<h1>Original Image</h1>
+<p>Permission to use image in progress (do not post this on Gimp.org yet!).</p>
+
+<p><img src="http://img146.imageshack.us/img146/836/photspecturtle1.jpg" width="480" height="360" alt="Original Image" /></p>
+
+<p>By looking at it you can note a few things.  There does not appear to be a red filter lens used and the photographer did not take it using the camera flash (or it is really clear water).  If they did then you would get artifacts in the image and a reflection from particles like in <a href="http://img573.imageshack.us/img573/2610/055cr.jpg" title="Particle and red filter interference">this image</a>.  The scuba divers also appear to be at the green depth.</p>
+
+<p>This means that when you adjust the colors you need more Red, Orange, and Yellow; and less Green and Blue.</p>
+
+<p>Open the image in Gimp and re-save it in the Gimp format (.xcf).  Press <strong>Ctrl+A</strong> (select all), <strong>Ctrl+C</strong> (copy the image), <strong>Ctrl+V</strong> (paste the image), and then click the new layer button in the Layers dialog so that you have two layers.  Go ahead and delete the <strong>Background</strong> layer now and save your work.</p>
+
+<p>The reason why I did that is because if you erase any part of the image then it will not erase the image to transparency but use the background color instead (by default is white).  This will not work for our purposes which is why I had you go through that strange button sequence (took me a long time to figure that out).  That usually happens when editing JPG images because they don't support transparency.  But that doesn't matter since we saved it as a Gimp image.</p>
+
+<h1>Color Adjustment</h1>
+<p>There's more than one way to adjust the colors.  Sometimes I create a new layers and bucket fill them with a solid red/orange/yellow/green/blue color.  Then you can set the Layer mode to Addition or subtract and change the layers opacity for how much is added or subtracted.  I prefer that method because it allows me to fine tune the colors and go back an change my color adjustment without having to guess previous settings.</p>
+
+<p>However for the sake of time and this tutorial I'm going to take the quick way out.  In the menu click on <strong>Colors > Color Balance</strong> and adjust the Red, Green, and Blue sliders until you have color corrected the image to the best of your ability.  It should look something like this...</p>
+
+<p><img src="http://img19.imageshack.us/img19/6237/coloradjusted.png" width="480" height="360" alt="Color Adjusted" /></p>
+
+<p>Save your work.</p>
+
+<h1>Hue/Saturation Adjustment</h1>
+<p>Sometimes the colors are over saturated with an underwater image.  That is the case with our sample underwater photography.  Duplicate your top most layer.  Then click on <strong>Colors > Hue-Saturation</strong> and adjust the saturation to be a little negative and the lightness a little positive (use your judgment for what looks good or bad when doing this).  Then set the layer <strong>opacity</strong> to around 55.  Your image should now look like the following.</p>
+
+<p><img src="http://img841.imageshack.us/img841/703/desaturated.png" width="480" height="360" alt="Desaturated Image" /></p>
+
+<p>Save your work.</p>
+
+<h1>Multiply Colors</h1>
+<p>Right click on your top layer and select <strong>New from Visible</strong> and then duplicate the layer.  Set the top layer mode to <strong>Multiply</strong> and set the layer <strong>opacity</strong> to 60.  Here is what your image looks like at this stage.</p>
+
+<p><img src="http://img25.imageshack.us/img25/6508/multiplyw.png" width="480" height="360" alt="Multiply Colors" /></p>
+
+<p>Save your work.</p>
+
+<h1>Screen and Overlay</h1>
+<p>This is a two step process but I almost always do them together and then adjust the opacity of each.  I always start out both layers with opacity of 60 and adjust from there.  At any rate here's your next steps.</p>
+
+<p>Right click on your top layer and select <strong>New from Visible</strong> and then duplicate the layer.  Set the top layer mode to <strong>Screen</strong> and set the layer <strong>opacity</strong> to 60.  Duplicate the top layer and set the layer mode to <strong>Overlay</strong>.  Both layers should now have an <strong>opacity</strong> of 60.  Your image should now look like...</p>
+
+<p><img src="http://img202.imageshack.us/img202/3550/screenoverlay.png" width="480" height="360" alt="Screen and Overlay" /></p>
+
+<p>Save your work.</p>
+
+<h1>Remove Noise</h1>
+<p>In much of the amateur underwater photography I've encountered there is almost always noise.  The only way I know how to adjust this is with Anisotropic Smoothing from the <a href="http://gmic.sourceforge.net/" title="G'MIC website">G'MIC plugin</a>.  Install this if you don't already have it.</p>
+
+<p>Right click on your top layer and select <strong>New from Visible</strong> and then duplicate the layer.  Be sure to have your top most layer selected.  Click on <strong>Filters > G'MIC</strong>.  Under Enhancement select <strong>Anisotropic smoothing</strong>.  In general always set <strong>anisotropy</strong> to 1 and <strong>iterations</strong> to 2.  For this image I set <strong>Amplitude</strong> to around 107, <strong>Sharpness</strong> to around 0.9, <strong>Gradient smoothness</strong> to 0.6, and <strong>Spacial Precision</strong> to 0.8.  The rest of the values I left default.</p>
+
+<p>Now click Apply or OK.  After anisotropic smoothing has been applied set the layer <strong>opacity</strong> to 50 (or whatever value you think looks best).  This will de-noisify the image.  You almost never set the anisotropic smoothing layer <strong>opacity</strong> to 100 because it makes the image look fake.  That is why I set it to half opaque.  Here is what your new image looks like.</p>
+
+<p><img src="http://img808.imageshack.us/img808/1083/anisotropic.png" width="480" height="360" alt="Anisotropic Smoothing" /></p>
+
+<p>To finish up right click on the top layer and select <strong>New from Visible</strong>.  Save your work.</p>
+
+<h1>The Final Product</h1>
+<p>When giving your image to friends be sure to save it in a format they can view.  Save it as a PNG for the highest quality.  You may also need to re-size the image (<strong>Image > Scale Image</strong>) if your camera takes HD photos (greater than 1200px resolution).  For web viewing 800x600 (or similar) is a good resolution to view images.</p>
+
+<p>Before:</p>
+
+<p><img src="http://img146.imageshack.us/img146/836/photspecturtle1.jpg" width="480" height="360" alt="Original Image" /></p>
+
+<p>After:</p>
+
+<p><img src="http://img213.imageshack.us/img213/2577/finalimage.png" width="480" height="360" alt="Final Image" /></p>
+
+<p>Screenshot of my Layers:</p>
+<img src="http://img543.imageshack.us/img543/3747/overviewl.png" width="338" height="617" alt="Layers Dialog" />
+
+<p>As with any photography you never do the exact same thing to every image. But you can generally follow the steps I outlined above and use your own judgment to make the image look good! Happy Gimping!</p>
+
+<p>Tutorial created by Sam Gleske<br />
+<a href="http://www.gleske.net/">http://www.gleske.net/</a></p>
+
+<!-- validated html -->
+  <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+  </p>
+
+</body>
+</html>

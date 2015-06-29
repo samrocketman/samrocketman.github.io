@@ -1,0 +1,143 @@
+/*styles by element alphabetical*/
+body
+{
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    cursor:url(batman.png), auto;
+}
+body,td,th,pre
+{
+    font-family: Tahoma, Arial;
+    font-size: 11px;
+}
+body,#main_table
+{
+    background-color: #e0dcd1;
+    background-image: url(background.jpg);
+    background-attachment: fixed;
+}
+a,a:active,a:link,a:visited
+{
+    color: blue;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+
+/*id attribute styles alphabetical*/
+#banner,#mainmenu_bg
+{
+    background-image: url(main_bg.png);
+}
+#banner a
+{
+    color: #a9ff43;
+    font-family: "Trebuchet MS", Tahoma, Verdana;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-right: 24px;
+    line-height: 14px;
+    margin: 0px;
+}
+#banner a:hover
+{
+    color: #FFCC00;
+    font-family: "Trebuchet MS", Tahoma, Verdana;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-right: 24px;
+    line-height: 14px;
+    margin: 0px;
+    text-decoration: none;
+}
+#banner h1
+{
+    color: #FFFFFF;
+    font-family: "Trebuchet MS", Tahoma, Verdana;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+#banner p
+{
+    color: #FFFFFF;
+    font-family: Tahoma, Arial;
+    font-size: 13px;
+    font-weight: normal;
+    padding-top: 0px;
+    margin-bottom: 2px;
+    margin-top: 0px;
+}
+#content
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#inner_table
+{
+    background-color: #fff;
+}
+#mainmenu a
+{
+    font-family: Tahoma, Arial;
+    color: #112F3A;
+    font-weight: normal;
+    text-decoration: underline;
+    display: block;
+    width: 85px;
+}
+#mainmenu a:hover
+{
+    font-family: Tahoma, Arial;
+    color: #B54617;
+    font-weight: normal;
+    text-decoration: none;
+}
+#mainmenu_bg
+{
+    background-position: 0px -130px;
+}
+
+/*class attribute styles alphabetical*/
+.content
+{
+    background-image: url(2bg.gif);
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.leftbg
+{
+    background-image: url(content_left_bg.png);
+    background-repeat: repeat-y;
+    background-position: right top;
+}
+.menu_link
+{
+    text-align: center;
+    background-image: url(bgubt.png);
+    /*CSS3 browsers*/
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /*mozilla browsers*/
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    /*webkit browsers*/
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    /*khtml Konqueror*/
+    -khtml-border-top-left-radius: 3px;
+    -khtml-border-top-right-radius: 3px;
+}
+.rightbg
+{
+    background-image: url(content_right_bg.png);
+    background-repeat: repeat-y;
+    background-position: left top;
+}

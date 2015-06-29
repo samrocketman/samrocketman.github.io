@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>About Calculator</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<script language="javascript" type="text/javascript">
+/******************************************************************
+*                                                    ***************
+***     Calculator Created by Sam Gleske               *************
+******        Thanks to Kyle Winters for help.            **********
+*********              Copyright (c) 2005 Sam Gleske          ******
+************                Notice must stay intact for use.     ***
+*********               The Javascript can be modified        ******
+******     Try out my JSEditor found on my site below     **********
+***      Visit http://www.pages.drexel.edu/~sag47/     *************
+*                                                    ***************
+*                   Included Documents:              ***************
+*                   sci_calc.htm                     ***************
+*                   about.htm                        ***************
+*                   favicon.ico                      ***************
+*                                                    ***************
+******************************************************************/
+var msie=navigator.appVersion.indexOf("MSIE")!=-1;
+var firefox=navigator.appVersion.indexOf("firefox");
+function _CloseOnEsc(e)
+{
+	var keyCode;
+	if(msie)
+		keyCode=event.keyCode;
+	else
+	{
+		var keyCode;
+		if(window.event)
+			keyCode=window.event.keyCode;
+		else if(e)
+			keyCode=e.which;
+	}
+	if(keyCode==27)
+	{
+		window.close();
+		return;
+	}
+}
+</script>
+<style type="text/css">
+p
+{
+	font-family: "courier new",courier;
+	font-size:12px;
+}
+body
+{
+	background-color:#e6e6e6;
+	color:#000;
+	cursor:default;
+	font-size:12px;
+	cursor:default;
+}
+</style>
+</head>
+<body onkeydown="_CloseOnEsc(event)">
+<fieldset style="width: 250px; cursor: default"><legend>
+<font size=4 color=black><img src="calc_resources/imgs/favicon.ico" alt="Calc Icon">About Calculator:</font></legend><br>
+<blockquote dir=ltr style="margin-left: 10px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px"><b>Version</b> 
+v1.3 <b>By</b> Sam Gleske<br><b>Created</b> November 28, 2005</blockquote></fieldset>
+<hr style="position:absolute;left:5px;width:250px;"><br>
+<div style="width:250px;height:100px;overflow:auto;background-color:white;font-size:16px;">
+<p>Copyright &copy; 2005 Sam Gleske</p>
+<p>Refer to help documentation for license information.</p>
+</div>
+<div style="width:250px;text-align:right">
+<input type="button" onClick="javascript:top.window.close()" style="height:20px; width:105px; font-size: 10px;" value="Close Window (ESC)"></div>
+</body>
+</html>

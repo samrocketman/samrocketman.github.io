@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- 
+	Written by Sam Gleske
+	Created October 23, 2008.
+-->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Logical arguments for proving JavaScript is an OOL</title>
+		<style type="text/css">
+			body
+			{
+				font-family: Arial;
+			}
+			.black
+			{
+				color: #000000;
+			}
+			.blue
+			{
+				color: #0000ff;
+			}
+			.green
+			{
+				color: #00aa00;
+			}
+			.maroon
+			{
+				color:#800000
+			}
+			.red
+			{
+				color: #ff0000;
+			}
+			.syntax
+			{
+				color: #000080;
+				font-weight: bold;
+			}
+			.int
+			{
+				color:#5f9ea0;
+			}
+		</style>
+	</head>
+	<body>
+		<p><span style="font-family:verdana;font-size: 20px">Object Oriented JavaScript</span><br>
+		<span style="font-size: 10px">A set of arguments I've created for proving JavaScript is now an Object Oriented Language.</span></p>
+		<hr>
+		<h3>Has JavaScript developed into an Object Oriented Language?</h3>
+		<p>I believe it has. One can create objects using the <span class="syntax">new</span> operator. There is a built in set of predefined objects but JavaScript extends even farther to incorporate the handling of user created objects as well.</p>
+		<p>There are both private and public functions/variables in relation to user defined JavaScript objects. After reviewing the below documents you will see how JavaScript handles private and public data.</p>
+		<p>An intermediate level knowledge of JavaScript/HTML is required to understand the below argument. This is not a tutorial although it may teach intermediate JavaScript/HTML programmers new tips or tricks.
+		<p><span style="font-family:verdana;font-size: 20px">HTML Document</span><br>
+		<span style="font-size: 10px">Copy and paste this code into example.html so it can be used.</span></p>
+		<hr>
+		<pre>
+<span class="blue">&lt;!DOCTYPE <span class="red">HTML</span> <span class="black">PUBLIC</span> "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</span>
+<span class="blue">&lt;<span class="maroon">html</span>&gt;</span>
+	<span class="blue">&lt;<span class="maroon">head</span>&gt;</span>
+		<span class="blue">&lt;<span class="maroon">meta</span> <span class="red">http-equiv</span><span class="black">=</span>"Content-Type" <span class="red">content</span><span class="black">=</span>"text/html; charset=iso-8859-1"&gt;</span>
+		<span class="blue">&lt;<span class="maroon">title</span>&gt;<span class="black">Object Oriented JavaScript</span>&lt;/<span class="maroon">title</span>&gt;</span>
+		<span class="blue">&lt;<span class="maroon">script</span> <span class="red">type</span><span class="black">=</span>"text/javascript" <span class="red">src</span><span class="black">=</span>"example.js"&gt;&lt;/<span class="maroon">script</span>&gt;</span>
+	<span class="blue">&lt;/<span class="maroon">head</span>&gt;</span>
+	<span class="blue">&lt;<span class="maroon">body</span>&gt;</span>
+		<span class="blue">&lt;<span class="maroon">script</span> <span class="red">type</span><span class="black">=</span>"text/javascript"&gt;</span>
+			var myObj=new cost();
+			document.writeln(<span class="blue">"Example Version: "</span>+myObj.version+<span class="blue">"&lt;br&gt;"</span>);
+			
+			<span class="green">//attempt to set the private var using a private function</span>
+			<span class="syntax">try</span> 
+			{
+				myObj.saveData(<span class="int">10</span>);
+			}
+			<span class="syntax">catch</span>(e)
+			{
+				document.writeln(<span class="blue">'&lt;span style="color:red"&gt;'</span>+e+<span class="blue">'&lt;/span&gt;&lt;br&gt;'</span>)
+			}
+			<span class="green">//attempt to access the private var directly</span>
+			document.writeln(<span class="blue">"Price is: $"</span>+myObj.price+<span class="blue">"&lt;br&gt;"</span>);
+			
+			<span class="green">//access the private function to set the private var using a public function</span>
+			myObj.enterData(<span class="int">10</span>);
+			<span class="green">//access the private var using a public function</span>
+			document.writeln(<span class="blue">"Price is: $"</span>+myObj.getPrice()+<span class="blue">"&lt;br&gt;"</span>);
+			<span class="green">//access the public array</span>
+			<span class="syntax">for</span>(<span class="syntax">var</span> i=0;i&lt;myObj.count.length;i++)
+				document.write(myObj.count[i]+<span class="blue">', '</span>);
+			document.writeln(<span class="blue">'&lt;br&gt;'</span>);
+		<span class="blue">&lt;/<span class="maroon">script</span>&gt;</span>
+	<span class="blue">&lt;/<span class="maroon">body</span>&gt;</span>
+<span class="blue">&lt;/<span class="maroon">html</span>&gt;</span>
+		</pre>
+		<p><span style="font-family:verdana;font-size: 20px">JavaScript Document</span><br>
+		<span style="font-size: 10px">Copy and paste this code into example.js so it can be used and make sure it is in the same folder as example.html.</span></p>
+		<hr>
+		<pre>
+<span class="green">//JS constructor (which is kinda viewed as a class)</span>
+<span class="syntax">function</span> cost()
+{
+	<span class="green">//private variables</span>
+	<span class="syntax">var</span> price=0;
+	
+	<span class="green">//public variables</span>
+	<span class="syntax">this</span>.version=<span class="int">0.1</span>;
+	<span class="syntax">this</span>.count=<span class="syntax">new</span> Array(); <span class="green">//Built in predefined object Array()</span>
+	<span class="syntax">this</span>.count[<span class="int">0</span>]=<span class="int">1</span>;
+	<span class="syntax">this</span>.count[<span class="int">1</span>]=<span class="int">2</span>;
+	<span class="syntax">this</span>.count[<span class="int">2</span>]=<span class="int">3</span>;
+	
+	<span class="green">//private functions</span>
+	<span class="syntax">function</span> saveData(a)
+	{
+		price=a;
+	};
+	
+	<span class="green">//public funcions</span>
+	<span class="syntax">this</span>.enterData=<span class="syntax">function</span>(a){
+		saveData(a);
+	};
+	<span class="syntax">this</span>.getPrice=<span class="syntax">function</span>(){
+		<span class="syntax">return</span> price;
+	};
+}
+		</pre>
+		<p>
+			<a href="http://validator.w3.org/check?uri=referer"><img
+				src="http://www.w3.org/Icons/valid-html401"
+				alt="Valid HTML 4.01 Strict" style="border-width: 0px" height="31" width="88"></a>
+		</p>
+		<p>
+			<a href="http://aptana.com">
+				<img src="http://www.aptana.com/images/built_with_aptana.gif?lat=37.772411&amp;lon=-122.400956" alt="built with aptana" style="border-width: 0px" title="Aptana" id="built_with_aptana">
+			</a>
+		</p>
+		<p>Proof written by Sam Gleske - ECE Major - Drexel University</p>
+	</body>
+</html>

@@ -1,0 +1,308 @@
+/**
+The original template was created by Sam Gleske
+This author and license block must stay intact for use even if this script is 
+modified!
+
+License:
+This file falls under the MIT Licence 
+http://www.opensource.org/licenses/mit-license.php
+Take responsibility for your own actions.
+
+Generated using Python and predefined proxy lists!
+http://sourceforge.net/projects/webtechtools/files/Proxy%20wpad.dat%20Generator/
+
+You are not authorized to use this proxy configuration for illegal purposes.
+This file follows the Netscape WPAD standard.  Please read the documentation
+after the configuration options for additional warnings and tips information.
+**/
+
+/*
+* Configuration Options
+*/
+
+//Enables console logging (true/false, default true)
+var ENABLE_LOGGING=true;
+
+
+//Enable friendly excludes (true/false, default true)
+//If a request matches an exclude then it will create a direct connection rather than proxy
+//This option must be disabled for user defined excludes to work
+var ENABLE_EXCLUDES=true;
+
+//User defined Protocol excludes (array)
+var protocol_excludes=[];
+
+//User defined IP excludes (array)
+var ip_excludes=[];
+
+//User defined Domain excludes (array)
+var domain_excludes=[];
+
+
+//Enable predefined proxy list (true/false, default true)
+//This option must be disabled for the user defined proxy list
+var ENABLE_PREDEFINED_PROXY_LIST=true;
+
+//User defined proxy list (array)
+var proxylist=[];
+
+/*
+* End of Configuration Options
+*/
+
+
+
+
+
+/************************************************************************************
+WARNINGS, INFORMATION, AND ADDITIONAL DOCUMENTATION
+*************************************************************************************
+It is highly recommended that you keep this documentation block if you modify 
+this file.
+
+DO NOT, I repeat, DO NOT log into web portals where financial or personal 
+information is at risk using an anonymous/3rd party proxy. It is possible that 
+an anonymous proxy is set up to record all traffic and to mine usernames and 
+passwords for websites. Monitoring insecure authentication or cookies are just a 
+few of many methods to achieve this. I have set up some rules which will help 
+minimize the effect of this but it is still recommended to disable this proxy 
+whenever handling such information. This is not a flaw of this software or 
+wpad.dat but more the nature of an anonymous proxy.
+
+Public Proxies and the Law
+According to U.S. law, 18 U.S.C. Section 1030 (Fraud and Related Activity in 
+Connection with Computers) applies only when anyone who knowingly accesses a 
+computer without authorization or has knowingly exceeds his authorized access on 
+that computer. Because an opened proxy, by default, allows connections and use of 
+the service by anyone in the WWW, its administrator has essentially authorized 
+everyone to use the proxy. Therefore browsing the web, via anonymous proxies, is 
+not illegal.
+
+
+This software is geared towards advanced end users and security professionals. By 
+using this software you agree to the MIT license which governs any unlicensed 
+software or files related to this file.
+
+
+What is wpad.dat?
+wpad.dat is a Web Proxy Automatic Detection (WPAD) file. Your browser selects a 
+proxy based on the pre-defined rules specified in the wpad.dat file. The language 
+is JavaScript for wpad.dat.
+
+
+Pros/Cons of proxying using my wpad.dat method?
+Pros:
+* Your IP address is constantly changing from the perspective of the web 
+	  server making you impossible to track.
+* There are pre-defined rules which help to protect your information if you 
+	  accidently forget to turn off this proxy method while browsing websites 
+	  where financial or personal information are at risk.
+	* If a website is using an encrypted connection then it does not go through
+	  any anonymous proxy.  PLEASE NOTE if you opt out of my predefined rules
+	  then this is no longer the case.
+
+Cons:
+* Your browsing speed is slightly diminished because you are visiting 
+	  websites via a proxy.
+* Your browsing habits and information are not guarunteed to be protected 
+	  from the anonymous proxy if by some happance this file is misconfigured.
+
+*************************************************************************************
+End of Documentation
+*************************************************************************************/
+
+
+
+
+
+//////////////// No need to edit beyond this point ///////////////
+
+//Custom defined functions for cleaner processing
+function exclude(source,rules)
+{
+	try
+	{
+		for(var i=0;i<rules.length;i++)
+			if(shExpMatch( source, rules[i]))
+				return true;
+		return false;
+	}
+	catch(e)
+	{
+		if(ENABLE_LOGGING)
+			alert("An exception has been encountered!\n" + source + "\n" + rules);
+		return false;
+	}
+}
+
+//Initialization Function
+function FindProxyForURL(url, host) 
+{
+	//These are my personal excludes just in case I accidently go to a login site with this proxy enabled
+	if(ENABLE_EXCLUDES)
+	{
+		ip_excludes=[
+			"192.168.*", //local router network
+			"127.*", //loopback or localhost
+			"144.118.*", //Drexel University
+			"74.125.*", //Google
+			"67.195.*", //Yahoo Inc
+			"170.201.*", //PNC Bank
+			"66.95.*", //United Bank
+			"12.*", //AT&T WorldNet Services (covers AES and other banking websites)
+			"164.109.*" //Digex, Incorporated. (Covers PECO and Exelon Corp)
+		];
+		domain_excludes=[
+			"*accuweather.com",
+			"*mozdev.org",
+			"*mozilla.org",
+			"*bankofamerica.com",
+			"*campusfood.com",
+			"*chase.com*",
+			"*clubbleach.org",
+			"*crunchyroll.com",
+			"*dccc.edu*",
+			"*domaintools.com",
+			"*ea.com",
+			"*ebay.com",
+			"*ebayrtm.com",
+			"*ebaystatic.com",
+			"*expedia.com",
+			"*experts-exchange.com",
+			"*facebook.com",
+			"*fbcdn.net",
+			"*flagfox.net",
+			"*fsdn.com",
+			"*godaddy.com",
+			"www.google.*", //Needed for when Google randomly decides to load files from another country like www.google.ca or www.google.com.ph
+			"*.gov",
+			"*geotrust.com",
+			"*ingdirect.com",
+			"*ittoolbox.com",
+			"*live.com",
+			"*logmein.com",
+			"*mqcdn.com",
+			"*msn.com",
+			"*newegg.ca",
+			"*newegg.com",
+			"*neweggimages.com",
+			"*passport.com",
+			"*passport.net",
+			"*passportimages.com",
+			"*paypal.com",
+			"*paypalobjects.com",
+			"*register.com",
+			"*sf.net",
+			"*sourceforge.net",
+			"*steampowered.com",
+			"*thawte.com",
+			"*verisign.com",
+			"*yahoo.com",
+			"*whois.net"
+		];
+		protocol_excludes=[
+			"about:*",
+			"aim:*",
+			"chrome:*",
+			"file:*",
+			"https:*",
+			"sftp:*",
+			"socks:*",
+			"steam:*",
+			"telnet:*"
+		];
+	};
+	
+	//Run exclude rules for protocols, domain names, and ip addresses
+	if(exclude(url.toLowerCase(),protocol_excludes))
+	{
+		if(ENABLE_LOGGING)
+			alert("Exclude rule triggered: protocol\n" + url);
+		return "DIRECT";
+	};
+	if(exclude(dnsResolve(host),ip_excludes))
+	{
+		if(ENABLE_LOGGING)
+			alert("Exclude rule triggered: ip\n" + dnsResolve(host));
+		return "DIRECT";
+	};
+	if(exclude(host.toLowerCase(),domain_excludes))
+	{
+		if(ENABLE_LOGGING)
+			alert("Exclude rule triggered: domain\n" + dnsResolve(host) + "\n" + host);
+		return "DIRECT";
+	};
+
+	//Pre-defined proxy list
+	if(ENABLE_PREDEFINED_PROXY_LIST)
+	{
+		proxylist=[
+			"169.229.50.13:3128",
+			"128.42.142.41:3124",
+			"169.229.50.5:3127",
+			"72.36.112.72:3124",
+			"132.239.17.226:3124",
+			"203.178.133.2:3128",
+			"192.42.43.23:3127",
+			"193.6.20.5:3128",
+			"219.93.178.162:3128",
+			"164.73.47.242:3124",
+			"119.70.40.101:8080",
+			"130.136.254.21:3128",
+			"128.59.20.227:3124",
+			"134.34.246.4:3124",
+			"134.226.52.34:3124",
+			"200.19.159.35:3128",
+			"202.189.126.85:3127",
+			"163.221.11.72:3128",
+			"133.11.240.56:3128",
+			"60.172.179.14:9000",
+			"221.238.17.245:8080",
+			"58.246.76.76:8080",
+			"221.215.1.224:8080",
+			"221.214.27.253:808",
+			"211.162.208.50:80",
+			"211.138.124.200:80",
+			"202.23.184.247:3124",
+			"199.197.2.163:80",
+			"193.196.39.10:3124",
+			"200.238.83.49:3128",
+			"174.142.24.201:3128",
+			"174.142.104.57:3128",
+			"134.34.246.4:3124",
+			"125.64.96.21:8008",
+			"118.175.22.69:8080",
+			"143.205.172.12:3124",
+			"211.138.124.196:80",
+			"83.212.32.133:3127",
+			"131.112.243.101:3124",
+			"211.138.124.198:80",
+			"211.138.124.232:80",
+			"211.138.124.210:80",
+			"211.138.124.197:80"
+		];
+	};
+	
+	//Generate a random index for the proxy list
+	try
+	{
+		var index=-1;
+		while(index<0)
+			index=Math.ceil(proxylist.length*Math.random())-1;
+
+		if(proxylist.length)
+		{
+			if(ENABLE_LOGGING)
+				alert("Rule not triggered!\n" + dnsResolve(host) + "\n" + host.toLowerCase() + "\n" + url.toLowerCase() + "\nUsing Proxy: " + proxylist[index]);
+			return "PROXY "+proxylist[index];
+		}
+		else
+			return "DIRECT";
+	}
+	catch(e)
+	{
+		if(ENABLE_LOGGING)
+			alert("An exception has been encountered!\n" + proxylist);
+		return "DIRECT";
+	};
+}

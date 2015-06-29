@@ -1,0 +1,39 @@
+@charset "utf-8";
+/********************************************************\
+*     Created by Sam Gleske                              *
+*     http://www.pages.drexel.edu/~sag47/                *
+*     Please keep this intact in order to use code       *
+\********************************************************/
+/* See folderview_engine.js for instructions on use */
+.item_link_
+{
+	/* style/behavior of genLink() links */
+	color: blue;
+	text-decoration: none;
+	font-size: 12px;
+}
+.item_link_:hover
+{
+	text-decoration: underline;
+}
+.inner_
+{
+	/* color of the folder link */
+	color: blue;
+}
+.outer_
+{
+	/* color of the folder underline */
+	color: red;
+	text-decoration: none;
+	font-size: 12px;
+}
+.outer_:hover
+{
+	text-decoration: underline;
+}
+.subfolder_
+{
+	/* indent of the subfolders */
+	margin-left: 20px;
+}

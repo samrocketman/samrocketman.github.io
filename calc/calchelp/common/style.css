@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+body
+{
+	background-color: white;
+	color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a:link,a:active,a:visited
+{
+	color: blue;
+}
+.highlight
+{
+	background: #FFFF40;
+}

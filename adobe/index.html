@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Adobe Serial Algorithm</title>
+<script src="adobe.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1>Adobe Serial Algorithm</h1>
+    <form name="adobe" onsubmit="this.decoded.value=DecodeAdobeKey(this.serial.value);return false">
+        <label for="serial" />Encoded Serial: </label><input type="text" name="serial" /><br />
+        <input type="submit" value="Decode" /><br />
+        <textarea rows="10" cols="40" name="decoded"></textarea>
+    </form>
+    <p>This web page goes along with <a href="http://sourceforge.net/apps/phpbb/keyfinder/viewtopic.php?f=1&t=7">this tutorial.</a></p>
+</body>
+</html>

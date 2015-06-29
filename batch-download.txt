@@ -1,0 +1,62 @@
+::software.drexel.edu download via wget (useful for automated downloads)
+::this is a comment
+
+:: Download wget for windows at http://users.ugent.be/~bpuype/wget/ and place it in your system32 dir
+
+@echo off
+:: Localize environment
+setlocal
+title Batch Download Utility By Sam Gleske
+:: Windows NT 4 / 2000 / XP / Vista only
+if not "%OS%"=="Windows_NT" goto Syntax
+cls
+echo.
+echo  BATCH DOWNLOADER FOR SOFTWARE.DREXEL.EDU
+echo  Version 0.1 for Windows NT 4 / 2000 / XP / Vista
+echo.
+echo  **wget for Windows is required
+echo.
+echo  Written by Sam Gleske
+echo.
+echo  Please Wait...
+ping -n 4 127.0.0.1 >NUL
+
+:: Ask for username
+echo.
+echo  Type in your user (abc25) for your Drexel Domain Account
+set /P DREXEL_USER="Username: "
+
+:: Ask for password
+echo.
+echo  Warning: Password shows up when you type it.  Be careful of who
+echo          is around.
+echo.
+echo  Type in the password for your Drexel Domain Account
+set /P DREXEL_PASS="Password: "
+cls
+::ensure the script runs from its own DIR
+%~d0
+cd %~dp0
+
+
+
+::sample download command
+::wget -c --http-user=%DREXEL_USER% --http-password=%DREXEL_PASS% --no-check-certificate https://software.drexel.edu/path/file_download.exe
+
+::Start writing download commands below
+
+
+
+::don't edit below
+::wrap up the batch downloader
+goto End
+:Syntax
+cls
+title Batch Download Utility By Sam Gleske
+echo   Designed for Windows NT 4 / 2000 / XP / Vista
+pause
+:End
+if not "%OS%"=="Windows_NT" ENDLOCAL
+::Copyright (C) 2006-2008 Sam Gleske
+::Copyright (C) 2008 Drexel University
+echo on

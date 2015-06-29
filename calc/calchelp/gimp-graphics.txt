@@ -1,0 +1,7 @@
+All graphics were processed in Gimp.
+
+For blur a selection was created along the grid lines and then inverted the selection.
+
+Re-ran Blur filter 6 times.  Filters > Blur > Blur
+
+Ran Drop Shadow filter with a black 6x6 offset at 80% opacity.  Filters > Light and Shadow > Drop Shadow

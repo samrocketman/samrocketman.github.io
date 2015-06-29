@@ -1,0 +1,238 @@
+@charset "utf-8";
+/*Default settings...incorporate other browsers with css files*/
+/*These settings work with Firefox, Opera, Mozilla definately and possibly others*/
+
+body 
+{
+	background-color:buttonface;
+	margin-top: 29px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+table,td
+{
+	border: 1px outset #aaa;
+}
+
+.num
+{
+	color:blue;
+}
+
+.BasFunc
+{
+	color:red;
+}
+
+.AdvFunc
+{
+	color:#FF0099;
+}
+
+#menuBar
+{
+	background-color: #F4F4F0;
+	color: #000;
+	width: 100%;
+	
+	border-style: solid;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-color: #808080;
+	
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	
+	z-index: 100;
+}
+
+#buttonBar
+{
+	background-color: #F4F4F0;
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: #FFF;
+	border-left-width: 1px;
+	border-bottom-color: #C0C0C0;
+	border-right-width: 1px;
+	color: #000;
+	left: 240px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 2px;																														 
+	padding-bottom: 3px;																													
+	position: absolute;																													 
+	top: 82px;																																		 
+	width: 400px;																																	
+	z-index: 100;																																 
+}
+
+.menuButton
+{
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: #F4F4F0;
+	border-left-color: #F4F4F0;
+	border-bottom-color: #F4F4F0;
+	border-right-color: #F4F4F0;
+	color: #000;
+	cursor: default;
+	font-family: "MS Sans Serif", Arial, Tahoma, sans-serif;
+	font-style: normal;
+	font-size: 8pt;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	text-decoration: none;
+}
+
+.menuButton:hover
+{
+	border-style: solid;
+	border-top-color: #316AC5;
+	border-left-color: #316AC5;
+	border-bottom-color: #316AC5;
+	border-right-color: #316AC5;
+	color: #000;
+	text-decoration: none;
+	background-color: #CED3E1;
+}
+
+.menu
+{
+	background-color: #FFF;
+	border-style: outset;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-color: #808080;
+	
+	margin: 0px;
+	padding: 2px;
+	position: absolute;
+	visibility: hidden;
+	z-index: 101;
+	width:125px;
+}
+
+.submenu
+{
+	background-color: #FFF;
+	color: #000;
+	cursor: default;
+	display: block;
+	font-family: "MS Sans Serif", Arial, Tahoma,sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+	margin: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 12px;
+	padding-right: 14px;
+	text-decoration: none;
+	border: 1px solid #FFF;
+	background: url(../imgs/arrow_r.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	z-index: 102;
+}
+
+.menuItem
+{
+	background-color: #FFF;
+	color: #000;
+	cursor: default;
+	display: block;
+	font-family: "MS Sans Serif", Arial, Tahoma,sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+	margin: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 12px;
+	padding-right: 14px;
+	text-decoration: none;
+	border: 1px solid #FFF;
+}
+
+.menuItem:hover
+{
+	background-color: #CED3E1;
+	text-decoration: none;
+	color: #000;
+	cursor: default;
+	display: block;
+	font-family: "MS Sans Serif", Arial, Tahoma,sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+	margin: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 12px;
+	padding-right: 14px;
+	text-decoration: none;
+	border: 1px solid #316AC5;
+}
+
+.menuDisabled
+{
+	background-color: #FFF;
+	color: #CCC;
+	cursor: default;
+	display: block;
+	font-family: "MS Sans Serif", Arial, Tahoma,sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+	margin: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 12px;
+	padding-right: 14px;
+	text-decoration: none;
+	border: 1px solid #FFF;
+}
+
+.setvalue
+{
+	background-color: transparent;
+	border-width: 0;
+	width: 40px;
+	height: 15px;
+	margin: 0px;
+	margin-bottom: 0px;
+	font-family: "MS Sans Serif", Arial, Tahoma,sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+	cursor: default;
+}
+
+/*This is the drop shadow for the menus, no need to edit at all*/
+._drop_shadow_r
+{
+	position: absolute;
+	background-image: url(../imgs/shadow-right.png);
+	background-repeat: repeat-y;
+	background-position: bottom right;
+	visibility: hidden;
+	z-index: 102;
+}
+._drop_shadow_b
+{
+	position: absolute;
+	background-image: url(../imgs/shadow-bottom.png);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	visibility: hidden;
+	z-index: 102;
+}

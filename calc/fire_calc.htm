@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Scientific Calculator</title>
+	<meta name="robots" content="noindex, nofollow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="SHORTCUT ICON" href="calc_resources/imgs/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="calc_resources/css/en-default.css">
+	<script language="JavaScript" type="text/javascript">
+		/*Copyright must stay intact*/
+		/******************************************************************\
+		*                                                    ***************
+		***     Calculator Created by Sam Gleske               *************
+		******                                                    **********
+		*********              Copyright (c) 2005 Sam Gleske          ******
+		************                Notice must stay intact for use.     ***
+		*********                The source can be modified.          ******
+		******                                                    **********
+		***      Visit http://www.gleske.net/                  *************
+		*                                                    ***************
+		\******************************************************************/
+		
+		//search for a browser type (this is only for browser specific settings, any browsers not listed should work with default code)
+		if(navigator.userAgent)
+		{
+			var msie=(navigator.userAgent.indexOf("MSIE")>0)?1:0;
+			var firefox=(navigator.userAgent.indexOf("Firefox")>0)?1:0;
+			var netscape=(navigator.userAgent.indexOf("Netscape")>0)?1:0;
+			var mozilla=(navigator.userAgent.indexOf("Gecko")>0)?1:0;
+		}
+		var opera=(window.opera)?1:0;
+		if(navigator.vendor)
+		{
+			var safari=(navigator.vendor.indexOf("Apple")!=-1)?1:0;
+			var konqueror=(navigator.vendor.indexOf("KDE")!=-1)?1:0;
+		}
+
+	</script>
+	
+	<!-- Custom JS objects -->
+	<script language="JavaScript" type="text/javascript" src="calc_resources/js/temperature_object.js"></script>
+	<script language="JavaScript" type="text/javascript" src="calc_resources/js/compute_object.js"></script>
+	
+	<!-- Core functionality JS files -->
+	<script language="JavaScript" type="text/javascript" src="calc_resources/js/menu_execution.js"></script>
+	<script language="JavaScript" type="text/javascript" src="calc_resources/js/math_functions.js"></script>
+	<script language="JavaScript" type="text/javascript" src="calc_resources/js/menu_functionality.js"></script>
+	<script language="JavaScript" type="text/javascript" src="calc_resources/js/keys.js"></script>
+	
+	<script language="JavaScript" type="text/javascript">
+		// define global variables
+		var activeButton,activeButton2,button2,mem,pi,store,calc,display,enableKeys,floatset;
+
+		if(msie)
+			document.writeln('<link rel="stylesheet" type="text/css" href="calc_resources/css/en-msie.css">');
+
+		function init()
+		{
+			//initialize global vars
+			display=document.calc.display;
+			calc=document.calc;
+			activeButton=new Array();
+			activeButton2=null;
+			button2=null;
+			mem='';
+			pi=3.1415926535897932384626433832795;
+			store=false;
+			enableKeys=true;
+			floatset=2;
+			
+			//initial setup
+			keyEvents();
+			set_titles();
+			if(calc.display.createTextRange)
+			{
+				document.getElementById("copy-menu").style.display="";
+				document.getElementById("paste-menu").style.display="";
+				document.getElementById("hr-menu").style.display="";
+			};
+			calc.reset();
+			ClearMem();
+			document.getElementById('float').innerHTML=floatset;
+
+			//grab calculator focus for typing
+			display.focus();
+			display.blur();
+		}
+
+
+		/*********************************************\
+		*                                             *
+		*            Calculator Info below            *
+		*                                             *
+		\*********************************************/
+
+		function aboutcalc()
+		{
+			window.open("about.htm","editorinfo","resizable=yes,width=300,height=250,status=no,menubar=no");
+		}
+	</script>
+</head>
+<body onload="init()">
+<!-- My personal coding hierarchy preferences: <tag class=? href=? type=? id=? name=? onclick=? onmouseover=? onmouseout=? onfocus=? onblur=? style=? onload=? action=? method=? onsubmit=? onkeypress=? onkeyup=? onkeydown=? value=? title=? target=? checked readonly> -->
+	<!-- MENU CODE -->
+
+	<!-- Tags for the menu bar. -->
+
+	<div id="menuBar" style="cursor:default;">
+		<table style="border: none;width:100%">
+		<tr>
+			<td  style="border: none;width:29px">
+				<a class="menuButton" href="" onclick="return buttonclick(0, this, 'fileMenu');" onmouseover="buttonMouseover(0, this, 'fileMenu');">File</a>
+			</td>
+			<td  style="border: none;width:30px">
+				<a class="menuButton" href="" onclick="return buttonclick(0, this, 'editMenu');" onmouseover="buttonMouseover(0, this, 'editMenu');">Edit</a>
+			</td>
+			<td  style="border: none;width:37px">
+				<a class="menuButton" href="" onclick="return buttonclick(0, this, 'convMenu');" onmouseover="buttonMouseover(0, this, 'convMenu');">Conv</a>
+			</td>
+			<td  style="border: none;text-align:left">
+				<a class="menuButton" href="" onclick="return buttonclick(0, this, 'helpMenu');" onmouseover="buttonMouseover(0, this, 'helpMenu');">Help</a>
+			</td>
+			<td  style="border: none;text-align:right">
+				<span style="font-size:9px;font-family:tahoma,verdana,arial">Scientific Calculator <span style="color:red;">v1.3.4</span></span>
+			</td>
+		</tr>
+		</table>
+	</div>
+
+<!-- Start Tags for the drop down menus. -->
+
+	<div class="menu" id="fileMenu">
+		<a class="menuItem" href="javascript:window.location.reload();" onclick="resetMenu()">Reload</a>
+		<a class="menuItem" href="javascript:window.close();" onclick="resetMenu()">Exit</a>
+	</div>
+
+	<div class="menu" id="editMenu">
+		<a class="menuItem" href="javascript:docmd(1);" id="copy-menu" onclick="resetMenu()" style="display:none;">Copy</a>
+		<a class="menuItem" href="javascript:docmd(0);" id="paste-menu" onclick="resetMenu()" style="display:none;">Paste</a>
+		<hr class="hr" id="hr-menu" style="display:none;">
+		<a class="menuItem" href="javascript:groupEquation()" id="group-equation" onclick="resetMenu()">Group Equation</a>
+		<a class="menuItem" href="javascript:roundFloat()" id="round-float" onclick="resetMenu()">Round Answer</a>
+		<a class="menuItem" href="javascript:setFloat()" id="set-float" onclick="resetMenu()" style="padding-top: 0px;padding-bottom: 0px;">Float = <span id="float">2</span></a>
+	</div>
+
+	<div class="menu" id="convMenu">
+		<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(1,this, 'convMenu-1')" onfocus="this.blur()">Base</a>
+		<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(1,this, 'convMenu-2')" onfocus="this.blur()">Temperature</a>
+		<a class="menuItem" href="http://www.onlineconversion.com/" onmouseover="if(activeButton[1]){resetMenu(1)}" onfocus="this.blur()" target="_blank">More Conversions</a>
+	</div>
+
+	<!--Start extended Submenus convMenu-->
+		<!-- Base submenu -->
+		<div class="menu" id="convMenu-1">
+			<a class="submenu" href="javascript:void(0);" onmouseover="buttonMouseover(2,this, 'convMenu-1-1')" id="bin" onfocus="this.blur()">Binary</a>
+			<a class="submenu" href="javascript:void(0);" onmouseover="buttonMouseover(2,this, 'convMenu-1-2')" id="dec" onfocus="this.blur()">Decimal</a>
+			<a class="submenu" href="javascript:void(0);" onmouseover="buttonMouseover(2,this, 'convMenu-1-3')" id="hex" onfocus="this.blur()">Hexidecimal</a>
+			<a class="submenu" href="javascript:void(0);" onmouseover="buttonMouseover(2,this, 'convMenu-1-4')" id="oct" onfocus="this.blur()">Octal</a>
+			<a class="menuDisabled" id="nooption1" onfocus="this.blur()" style="display:none;">Not Available.</a>
+		</div>
+			<!-- Binary submenu -->
+			<div class="menu" id="convMenu-1-1">
+				<a class="menuItem" href="javascript:convBase('bin','Dec');" onclick="resetMenu();">to Dec</a>
+				<a class="menuItem" href="javascript:convBase('bin','Hex');" onclick="resetMenu();">to Hex</a>
+				<a class="menuItem" href="javascript:convBase('bin','Oct');" onclick="resetMenu();">to Oct</a>
+			</div>
+			<!-- End Binary submenu -->
+			<!-- Decimal submenu -->
+			<div class="menu" id="convMenu-1-2">
+				<a class="menuItem" href="javascript:convBase('dec','Bin');" onclick="resetMenu();">to Bin</a>
+				<a class="menuItem" href="javascript:convBase('dec','Hex');" onclick="resetMenu();">to Hex</a>
+				<a class="menuItem" href="javascript:convBase('dec','Oct');" onclick="resetMenu();">to Oct</a>
+			</div>
+			<!-- End Decimal submenu -->
+			<!-- Hexidecimal submenu -->
+			<div class="menu" id="convMenu-1-3">
+				<a class="menuItem" href="javascript:convBase('hex','Bin');" onclick="resetMenu();">to Bin</a>
+				<a class="menuItem" href="javascript:convBase('hex','Dec');" onclick="resetMenu();">to Dec</a>
+				<a class="menuItem" href="javascript:convBase('hex','Oct');" onclick="resetMenu();">to Oct</a>
+			</div>
+			<!-- End Hexidecimal submenu -->
+			<!-- Octal submenu -->
+			<div class="menu" id="convMenu-1-4">
+				<a class="menuItem" href="javascript:convBase('oct','Bin');" onclick="resetMenu();">to Bin</a>
+				<a class="menuItem" href="javascript:convBase('oct','Dec');" onclick="resetMenu();">to Dec</a>
+				<a class="menuItem" href="javascript:convBase('oct','Hex');" onclick="resetMenu();">to Hex</a>
+			</div>
+			<!-- End Octal submenu -->
+		<!-- End Base submenu -->
+		
+		<!-- Temperature submenu -->
+		<div class="menu" id="convMenu-2">
+			<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(2,this, 'convMenu-2-1')" id="celsius" onfocus="this.blur()">Celsius</a>
+			<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(2,this, 'convMenu-2-2')" id="fahr" onfocus="this.blur()">Fahrenheit</a>
+			<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(2,this, 'convMenu-2-3')" id="kelvin" onfocus="this.blur()">Kelvin</a>
+			<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(2,this, 'convMenu-2-4')" id="rankine" onfocus="this.blur()">Rankine</a>
+			<a class="submenu" href="javascript:void(0)" onmouseover="buttonMouseover(2,this, 'convMenu-2-5')" id="reaumur" onfocus="this.blur()">Reaumur</a>
+			<a class="menuDisabled" id="nooption2" onfocus="this.blur()" style="display:none;">Not Available.</a>
+		</div>
+			<!-- Celsius submenu -->
+			<div class="menu" id="convMenu-2-1">
+				<a class="menuItem" href="javascript:convTemp('celsius','toFahr')" onclick="resetMenu();">to Fahrenheit</a>
+				<a class="menuItem" href="javascript:convTemp('celsius','toKelvin')" onclick="resetMenu();">to Kelvin</a>
+				<a class="menuItem" href="javascript:convTemp('celsius','toRankine')" onclick="resetMenu();">to Rankine</a>
+				<a class="menuItem" href="javascript:convTemp('celsius','toReaumur')" onclick="resetMenu();">to Reaumur</a>
+			</div>
+			<!-- End Celsius submenu -->
+			<!-- Fahr submenu -->
+			<div class="menu" id="convMenu-2-2">
+				<a class="menuItem" href="javascript:convTemp('fahr','toCelsius')" onclick="resetMenu();">to Celsius</a>
+				<a class="menuItem" href="javascript:convTemp('fahr','toKelvin')" onclick="resetMenu();">to Kelvin</a>
+				<a class="menuItem" href="javascript:convTemp('fahr','toRankine')" onclick="resetMenu();">to Rankine</a>
+				<a class="menuItem" href="javascript:convTemp('fahr','toReaumur')" onclick="resetMenu();">to Reaumur</a>
+			</div>
+			<!-- End Fahr submenu -->
+			<!-- Kelvin submenu -->
+			<div class="menu" id="convMenu-2-3">
+				<a class="menuItem" href="javascript:convTemp('kelvin','toCelsius')" onclick="resetMenu();">to Celsius</a>
+				<a class="menuItem" href="javascript:convTemp('kelvin','toFahr')" onclick="resetMenu();">to Fahrenheit</a>
+				<a class="menuItem" href="javascript:convTemp('kelvin','toRankine')" onclick="resetMenu();">to Rankine</a>
+				<a class="menuItem" href="javascript:convTemp('kelvin','toReaumur')" onclick="resetMenu();">to Reaumur</a>
+			</div>
+			<!-- End Kelvin submenu -->
+			<!-- Rankine submenu -->
+			<div class="menu" id="convMenu-2-4">
+				<a class="menuItem" href="javascript:convTemp('rankine','toCelsius')" onclick="resetMenu();">to Celsius</a>
+				<a class="menuItem" href="javascript:convTemp('rankine','toFahr')" onclick="resetMenu();">to Fahrenheit</a>
+				<a class="menuItem" href="javascript:convTemp('rankine','toKelvin')" onclick="resetMenu();">to Kelvin</a>
+				<a class="menuItem" href="javascript:convTemp('rankine','toReaumur')" onclick="resetMenu();">to Reaumur</a>
+			</div>
+			<!-- End Rankine submenu -->
+			<!-- Celsius submenu -->
+			<div class="menu" id="convMenu-2-5">
+				<a class="menuItem" href="javascript:resetMenu()" onclick="convTemp('reaumur','toCelsius');">to Celsius</a>
+				<a class="menuItem" href="javascript:convTemp('reaumur','toFahr')" onclick="resetMenu();">to Fahrenheit</a>
+				<a class="menuItem" href="javascript:convTemp('reaumur','toKelvin')" onclick="resetMenu();">to Kelvin</a>
+				<a class="menuItem" href="javascript:convTemp('reaumur','toRankine')" onclick="resetMenu();">to Rankine</a>
+			</div>
+			<!-- End Celsius submenu -->
+		<!-- End Temperature submenu -->
+	<!--End extended Submenus-->
+
+	<div class="menu" id="helpMenu">
+		<a class="menuItem" href="javascript:(function(){window.open('calchelp/index.html','help','resizable=yes,width=803,height=500'); return void(0);})()" onclick="resetMenu()">Documentation</a>
+		<hr class="hr">
+		<a class="menuItem" href="javascript:aboutcalc()" onclick="resetMenu()">About Calculator</a>
+	</div>
+
+	<!-- End Tags for the drop down menus. -->
+
+	<!-- MENU CODE END -->
+
+
+
+
+
+
+
+
+	<!--Start calculator buttons-->
+	<form action="javascript:void(0)" method="get" name="calc" id="calc" onsubmit="display_compute();return false">
+		<table class="calc_table" align="center" cellspacing="0" cellpadding="1" style="background-color:buttonface;width:328px">
+		<tr>
+			<td style="text-align:center" colspan="7"><input type="text" name="display" style="width:99%;text-align:right;cursor:default" value="0" onfocus="toggle_keys('off');if(this.value==0){this.value=''};" onblur="toggle_keys('on');if(this.value==''){this.value=0};"></td>
+		</tr>
+		<tr>
+			<td style="border-right-width:0px;text-align:center" colspan="3"><input name="angle" checked="checked" type="radio" id="degrees"><label for="degrees"> Degrees</label></td>
+			<td colspan="4" style="text-align:center"><input name="angle" type="radio" id="radians"><label for="radians"> Radians</label></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><input type="text" name="memory" style="height:23px;width:30px;border-color:menu;background-color:buttonface;text-align:center;cursor:default;" readonly></td>
+			<td style="text-align:center" colspan="3"><input class="BasFunc" type="button" name="backbtn" onclick="deleteChar()" style="width:117px;height:28px" value="Backspace"></td>
+			<td style="text-align:center" colspan="2"><input class="BasFunc" type="button" name="delbtn" onclick="this.form.display.value=0" style="width:84px;height:28px" value="CE"></td>
+			<td style="text-align:center" colspan="1"><input class="BasFunc" type="button" name="ac" onclick="this.form.reset();ClearMem()" style="width:40px;height:28px" value="AC"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="mClear" onclick="ClearMem()" style="width:40px;height:28px" value="MC"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn7" onclick="addChar('7')" style="width:33px;height:28px" value="7"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn8" onclick="addChar('8')" style="width:33px;height:28px" value="8"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn9" onclick="addChar('9')" style="width:33px;height:28px" value="9"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="divide" onclick="if(display.value!='0')addChar('/')" style="width:33px;height:28px" value="/"></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="b6" onclick="addChar('e^(')" style="width:40px;height:28px" value="exp"></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="b7" onclick="addChar('ln(')" style="width:40px;height:28px" value="ln"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="mRecall" onclick="RecallMem()" style="width:40px;height:28px" value="MR"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn4" onclick="addChar('4')" style="width:33px;height:28px" value="4"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn5" onclick="addChar('5')" style="width:33px;height:28px" value="5"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn6" onclick="addChar('6')" style="width:33px;height:28px" value="6"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="multiply" onclick="if(display.value!='0')addChar('*')" style="width:33px;height:28px" value="*"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="c6" onclick="if(display.value!='0')addChar('%')" style="width:40px;height:28px" value="%"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="c7" onclick="if(display.value!='0')addChar('^')" style="width:40px;height:28px" value="x^y"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="mStore" onclick="StoreMem()" style="width:40px;height:28px" value="MS"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn1" onclick="addChar('1')" style="width:33px;height:28px" value="1"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn2" onclick="addChar('2')" style="width:33px;height:28px" value="2"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn3" onclick="addChar('3')" style="width:33px;height:28px" value="3"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="subtract" onclick="addChar('-')" style="width:33px;height:28px" value="-"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="d6" onclick="if(display.value!='0')addChar('<<')" style="width:40px;height:28px" value="<<"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="d7" onclick="if(display.value!='0')addChar('>>')" style="width:40px;height:28px" value=">>"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="mPlus" onclick="MemPlus()" style="width:40px;height:28px" value="M+"></td>
+			<td style="text-align:center"><input class="num" type="button" name="btn0" onclick="addChar('0')" style="width:33px;height:28px" value="0"></td>
+			<td style="text-align:center"><input class="num" type="button" name="e3" onclick="if(compute.changeSign(display.value.toString())) display.value=compute.changeSign(display.value.toString())" style="width:33px;height:28px" value="±"></td>
+			<td style="text-align:center"><input class="num" type="button" name="dot" onclick="addChar('.')" style="width:33px;height:28px" value="."></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="add" onclick="addChar('+')" style="width:33px;height:28px" value="+"></td>
+			<td style="text-align:center"><input class="BasFunc" type="submit" name="enter" style="width:33px;height:28px" value="="></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" onclick="flip()" style="width:40px;height:28px" name="e7" value="1/x"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><input class="num" type="button" name="pi" onclick="addChar('pi')" style="width:40px;height:28px;font-family:times;" value="π"></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="parl" onclick="addChar('(')" style="width:33px;height:28px" value="("></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="parr" onclick="if(display.value!='0')addChar(')')" style="width:33px;height:28px" value=")"></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="f4" onclick="addChar('cos(')" style="width:37px;height:28px" value="cos"></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="f5" onclick="addChar('sin(')" style="width:37px;height:28px" value="sin"></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="f6" onclick="addChar('tan(')" style="width:40px;height:28px" value="tan"></td>
+			<td style="text-align:center"><input class="BasFunc" type="button" name="ekey" onclick="addChar('e')" style="width:40px;height:28px" value="EE"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center" colspan="2"><button class="AdvFunc" type="button" name="g1" onclick="addChar('acos(')" style="width:60px;height:28px">cos<sup>-1</sup></button></td>
+			<td style="text-align:center" colspan="2"><button class="AdvFunc" type="button" name="g3" onclick="addChar('asin(')" style="width:60px;height:28px">sin<sup>-1</sup></button></td>
+			<td style="text-align:center" colspan="2"><button class="AdvFunc" type="button" name="g5" onclick="addChar('atan(')" style="width:60px;height:28px">tan<sup>-1</sup></button></td>
+			<td style="text-align:center"><input class="AdvFunc" type="button" name="log" onclick="addChar('log(')" style="width:40px;height:28px" value="log"></td>
+		</tr>
+		</table>
+	</form>
+
+	<!--End of calculator buttons-->
+
+	<!--Disabled JavaScript warning-->
+	<noscript><p align="center" style="color: red">Calculator functionality is disabled because JavaScript is disabled.</p></noscript>
+
+	<!--Hidden field below is for pasting text from IE into the Display-->
+	<input type="text" id="paste" style="position:absolute;top:0;visibility:hidden;">
+</body>
+</html>

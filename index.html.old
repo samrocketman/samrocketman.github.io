@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+	@author Sam Gleske
+	Created on 10/14/2008
+	-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Gleske Productions</title>
+	<link rel="stylesheet" type="text/css" href="css/style_shared.css" />
+	<script language="javascript" type="text/javascript">
+		if (window != top)
+			top.location.href = location.href;
+		else
+		{
+			var mobi_exp=/DoCoMo|UP\.[BL]|Windows CE|Xiino|CLDC|LGE|Reqwire|ProxiNet|Mini|Mobi|SEC\-SGH|Symbian|Elaine|EPOC|Berry|Blazer|AvantGo|ASTEL|armv|V80[12]S[AE]|[Pp](alm|DA|DXGW|OCKET|lucker|IE|orta)|iP(hone|od|AQ)|N(itro|etFront|okia)/;
+			isMobile=(navigator.userAgent.search(mobi_exp)>-1)?1:0;
+			if(isMobile)
+			{
+				document.writeln('<p align="center">You appear to be using a mobile device.</p><h3 align="center"><a href="mobile/index.html">Enter Mobile Website</a></h3><p align="right"><a href="index2.html">View the regular website</a>.</p>')
+				document.close();
+			}
+			else
+				window.top.location.href="index2.html";
+		}
+	</script>
+</head>
+<body>
+	<!--Gleske.net is temporarily down for maintenance.  Sorry for any inconvenience!  Please check back in a day or so.-->
+	<noscript>
+		<p align="center">You appear to be using a browser that doesn't support JavaScript or has it disabled. Try <a href="http://www.getfirefox.com/">Firefox</a>. There is a non-JavaScript version of this website designed for mobile browsers that you can view.</p><h3 align="center"><a href="mobile/index.html">Enter Non-Javascript (Mobile) Website</a></h3><p align="right"><a href="index2.html">View the regular website</a>.</p>
+	</noscript>
+</body>
+</html>
