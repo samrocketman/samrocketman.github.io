@@ -137,19 +137,6 @@ function randomQuote()
     $('banner_text').set('html','"'+Quotes.getRandom()+'"');
 }
 
-/**
- * Function: writePlaylist()
- * Description: Writes the html for the playlist.  Did this little workaround so my page can be validated.
- * Arguments:
- *         none
- */
-function writePlaylist()
-{
-    document.open("text/html");
-    document.writeln('<div style="text-align: right; margin-left: auto; visibility:visible; margin-right: auto; width:450px;"><embed style="width:435px; visibility:visible; height:270px;" allowScriptAccess="never" src="http://www.musicplaylist.us/mc/mp3player-othersite.swf?config=http://www.musicplaylist.us/mc/config/config_black_noautostart_shuffle.xml&mywidth=435&myheight=270&playlist_url=http://www.musicplaylist.us/loadplaylist.php?playlist=34434082" menu="false" quality="high" width="435" height="270" name="mp3player" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" border="0"/><br><a href=http://www.musicplaylist.us><img src=http://www.musicplaylist.us/mc/images/create_black.jpg border=0></a><a href=http://www.musicplaylist.us/standalone/34434082 target=_blank><img src=http://www.musicplaylist.us/mc/images/launch_black.jpg border=0></a><a href=http://www.musicplaylist.us/download/34434082><img src=http://www.musicplaylist.us/mc/images/get_black.jpg border=0></a> </div>');
-    document.close();
-}
-
 /** Format for citing others' work.
  * @author Name (email)
  * @copyright none
